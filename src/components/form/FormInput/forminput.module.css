@@ -1,0 +1,10 @@
+.label {
+  align-self: center;
+}
+
+.input {
+  width: 250px;
+  align-self: center;
+  border-radius: 10px;
+  padding: 0 0 0 10px;
+}

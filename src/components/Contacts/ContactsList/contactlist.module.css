@@ -1,0 +1,19 @@
+.list {
+  width: 400px;
+  align-self: center;
+}
+.item {
+  display: flex;
+  justify-content: space-between;
+}
+.delBtn {
+  align-self: center;
+  width: 75px;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+}
+.delBtn:hover {
+  background-color: aquamarine;
+  transition: background-color ease 0.3s;
+}
