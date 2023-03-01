@@ -4,6 +4,7 @@ import css from './form.module.css';
 import PropTypes from 'prop-types';
 
 export const Form = ({ handleChange, handleSubmit, name, number }) => {
+  
   return (
     <div className={css.container}>
       <h2 className={css.title}>Phonebook</h2>

@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import { Msg } from './message/Msg';
 import { nanoid } from 'nanoid';
 import { Form } from './form/Form';
 import { Contacts } from './Contacts/Contacts';
 
-const Msg = styled.h2`
-  text-align: center;
-  padding: 20px 0 0 0;
-`;
 export const App = () => {
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState(
+    JSON.parse(localStorage.getItem('savedContacts')) || []
+  );
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const [filter, setFilter] = useState('');
@@ -17,7 +15,6 @@ export const App = () => {
   const handleContactRemove = id => {
     const updatedContacts = contacts.filter(c => c.id !== id);
     setContacts(updatedContacts);
-    localStorage.setItem('savedContacts', `${JSON.stringify(updatedContacts)}`);
   };
 
   const handleChange = e => {
@@ -47,14 +44,11 @@ export const App = () => {
       setContacts(addContact);
       setName('');
       setNumber('');
-      localStorage.setItem('savedContacts', `${JSON.stringify(addContact)}`);
     }
   };
   useEffect(() => {
-    const savedContacts = JSON.parse(localStorage.getItem('savedContacts'));
-    if (!savedContacts) return;
-    setContacts(savedContacts);
-  }, []);
+    localStorage.setItem('savedContacts', `${JSON.stringify(contacts)}`);
+  }, [contacts]);
   return (
     <>
       <Form
